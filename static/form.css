@@ -1,0 +1,125 @@
+/* variable css */
+:root {
+    /* --background-color: #ffffff; */
+    --black-blue: #1B262C;
+    --navy-blue: #0F4C75;
+    --blue: #54a7de;
+    --light-blue: #BBE1FA;
+    --golden: #bc9864;
+    --off-black: #060606;
+    --grey: #8a8a8a;
+    --dark-grey: #141414;
+    --off-white: #f5f5f5;
+    --sonic-silver: hsl(0, 0%, 44%);
+    --white: #ffffff;
+    --black: #000000;
+}
+
+.form {
+    width: 500px;
+    margin: 10vh auto;
+}
+
+.form input,
+.form button {
+    width: 100%;
+}
+
+.form .form-title {
+    font-size: 42px;
+    text-align: center;
+    margin: 5vh auto;
+}
+
+.form .form-label {
+    font-size: 12px;
+    display: flex;
+}
+
+.form .form-input,
+.form-button {
+    margin: 5px 0 20px 0;
+    padding: 5px;
+    height: 40px;
+    border: 1px solid var(--grey);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form .form-button {
+    font-size: 20px;
+    border: 1px solid var(--black);
+    background-color: var(--light-blue);
+    transition: 200ms;
+}
+
+.form-button:hover {
+    background-color: var(--blue);
+}
+
+.below-form {
+    display: flex;
+    justify-content: center;
+}
+
+.ticket-flex {
+    display: flex;
+    gap: 20px;
+}
+
+.seats-input {
+    display: flex;
+}
+
+.plus, .minus {
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+    margin: 0 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    border: 1px solid var(--black);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-label {
+    margin: 5px 0;
+}
+
+.ticket-cost-parent input {
+    width: 110px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    margin: 5px;
+    margin-top: 0px;
+}
+
+.seats-input input {
+    width: 40px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+form h3 {
+    margin: 10px auto;
+}
+
+@media (max-width: 500px) {
+    .form {
+        width: 90%;
+    }
+
+    p {
+        font-size: 10px;
+    }
+}

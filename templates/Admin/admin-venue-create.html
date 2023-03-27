@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create A Show</title>
+    <!-- Stylesheet Link -->
+    <link rel="stylesheet" href="../../Assets/Style/style.css">
+    <link rel="stylesheet" href="../../Assets/Style/form.css">
+    <!-- Script Link -->
+    <script src="../../Assets/Script/script.js" defer></script>
+    <!-- Icons Link -->
+    <script src="https://kit.fontawesome.com/6d232ec003.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <label><a href="../../index.html">Movie Maven</a></label>
+        </div>
+        <div class="nav-actions">
+            <button class="nav-btn">
+                <a href="../movies.html">
+                    <i class="fa-solid fa-clapperboard icon"></i>
+                    <p class="nav-action-label">Movies</p>
+                </a>
+            </button>
+            <button class="nav-btn">
+                <a href="../login.html">
+                    <i class="fa-solid fa-arrow-right-to-bracket icon"></i>
+                    <p class="nav-action-label">Login</p>
+                </a>
+            </button>
+        </div>
+    </nav>
+
+    <div class="form">
+        <h1 class="form-title">Create A Venue</h1>
+
+        <form action="?" method="post">
+            <label 
+                class="form-label"
+                for="show-location">
+                Venue of the Show: 
+            </label>
+            
+            <input 
+                class="form-input"
+                type="text" 
+                name="show-location" 
+                id="show-location" 
+                placeholder="Eg: Mumbai"
+                required
+            >
+
+            <label 
+                class="form-label"
+                for="show-ticket1-seats">
+                Number of Platinum Seats: 
+            </label>
+            
+            <input 
+                class="form-input"
+                type="number" 
+                name="show-ticket1-seats" 
+                id="show-ticket1-seats" 
+                placeholder="Eg: 20"
+                required
+            >
+
+            <label 
+                class="form-label"
+                for="show-ticket2-seats">
+                Number of Gold Seats: 
+            </label>
+            
+            <input 
+                class="form-input"
+                type="number" 
+                name="show-ticket2-seats" 
+                id="show-ticket2-seats" 
+                placeholder="Eg: 30"
+                required
+            >
+
+            <label 
+                class="form-label"
+                for="show-ticket3-seats">
+                Number of Silver Seats: 
+            </label>
+            
+            <input 
+                class="form-input"
+                type="number" 
+                name="show-ticket3-seats" 
+                id="show-ticket3-seats" 
+                placeholder="Eg: 50"
+                required
+            >
+
+            <button 
+                class="form-button"
+                type="submit">
+                Create Venue
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>

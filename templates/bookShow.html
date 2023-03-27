@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Maven</title>
+    <!-- Stylesheet Link -->
+    <link rel="stylesheet" href="../Assets/Style/style.css">
+    <link rel="stylesheet" href="../Assets/Style/form.css">
+    <!-- Script Link -->
+    <script src="../Assets/Script/script.js" defer></script>
+    <!-- Icons Link -->
+    <script src="https://kit.fontawesome.com/6d232ec003.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <label><a href="../index.html">Movie Maven</a></label>
+        </div>
+        <div class="nav-actions">
+            <button class="nav-btn">
+                <a href="./movies.html">
+                    <i class="fa-solid fa-clapperboard icon"></i>
+                    <p class="nav-action-label">Movies</p>
+                </a>
+            </button>
+            
+            <button class="nav-btn">
+                <a href="./userDashboard.html">
+                    <i class="fa-solid fa-user icon"></i>
+                    <p class="nav-action-label">Dashboard</p>
+                </a>
+            </button>
+
+            <button class="nav-btn">
+                <a href="./login.html">
+                    <i class="fa-solid fa-arrow-right-to-bracket icon"></i>
+                    <p class="nav-action-label">Login</p>
+                </a>
+            </button>
+        </div>
+    </nav>
+
+    <div class="form">
+        <h1 class="form-title">Book A Show</h1>
+
+        <h2>Name of the show: Show_Name</h2>
+        <br>
+        <h3>Time: 00:00 PM</h3>
+        <br>
+        <p>Total Available Seats: </p>
+        <li>₹349 - 10</li>
+        <li>₹199 - 20</li>
+        <li>₹149 - 30</li>
+        <br>
+
+        <form action="?" method="post">
+            <div class="ticket-flex">
+                <div class="ticket-cost-calculate">
+                    <label 
+                        class="form-label">
+                        Number of seats: 
+                    </label>
+                    
+                    <div class="seats-input">
+                        <div 
+                            class="plus" 
+                            id="plus1">
+                            +
+                        </div>
+                        <input 
+                            type="number" 
+                            inputmode="numeric"
+                            name="seats" 
+                            id="seats1" 
+                            value="0"
+                        >
+                        <div 
+                            class="minus" 
+                            id="minus1">
+                            -
+                        </div>
+                    </div>
+                    <div class="ticket-cost-parent">
+                        <label 
+                            class="form-label">
+                            ₹349 * no. of tickets
+                        </label>
+                        <input 
+                            class="ticket-cost" 
+                            id="ticketCost-1"
+                            type="number" 
+                            value="0" 
+                            readonly
+                        >
+                    </div>
+                </div>
+                
+                <div class="ticket-cost-calculate">
+                    <label 
+                        class="form-label"
+                        for="noOfSeats">
+                        Number of seats: 
+                    </label>
+                    
+                    <div class="seats-input">
+                        <div 
+                            class="plus" 
+                            id="plus2">
+                            +
+                        </div>
+                        <input 
+                            type="number" 
+                            inputmode="numeric"
+                            name="seats" 
+                            id="seats2" 
+                            value="0"
+                        >
+                        <div 
+                            class="minus" 
+                            id="minus2">
+                            -
+                        </div>
+                    </div>
+                    <div class="ticket-cost-parent">
+                        <label 
+                            class="form-label">
+                            ₹199 * no. of tickets
+                        </label>
+                        <input 
+                            class="ticket-cost" 
+                            id="ticketCost-2"
+                            type="number" 
+                            value="0" 
+                            readonly
+                        >
+                    </div>
+                </div>
+                <div class="ticket-cost-calculate">
+                    <label 
+                        class="form-label"
+                        for="noOfSeats">
+                        Number of seats: 
+                    </label>
+                    
+                    <div class="seats-input">
+                        <div 
+                            class="plus" 
+                            id="plus3">
+                            +
+                        </div>
+                        <input 
+                            type="number" 
+                            inputmode="numeric"
+                            name="seats" 
+                            id="seats3" 
+                            value="0"
+                        >
+                        <div 
+                            class="minus" 
+                            id="minus3">
+                            -
+                        </div>
+                    </div>
+                    <div class="ticket-cost-parent">
+                        <label 
+                            class="form-label">
+                            ₹149 * no. of tickets
+                        </label>
+                        <input 
+                            class="ticket-cost" 
+                            id="ticketCost-3"
+                            type="number" 
+                            value="0" 
+                            readonly
+                        >
+                    </div>
+                </div>
+            </div>
+            
+            <label 
+                class="form-label"
+                for="totAmount">
+                Total Amount: 
+            </label>
+            
+            <input 
+                class="form-input"
+                type="totAmount" 
+                name="totAmount" 
+                id="totAmount" 
+                value="0"
+            >
+
+            <button 
+                class="form-button"
+                type="submit">
+                Confirm Booking
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>

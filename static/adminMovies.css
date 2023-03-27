@@ -1,0 +1,124 @@
+/* Reset all web parameters */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    user-select: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a,
+img,
+input,
+button,
+.icon {
+    display: block;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: sans-serif;
+}
+
+.all-movies {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 5vh auto;
+}
+
+.venue {
+    width: 300px;
+    min-height: 220px;
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid var(--black);
+    border-radius: 8px;
+    background-color: var(--very-light-blue);
+}
+
+.venue-name {
+    font-size: 20px;
+}
+
+.show {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px auto;
+}
+
+.show-edit {
+    color: var(--black);
+}
+
+.venue-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.venue-buttons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--black);
+    width: 120px;
+    height: 40px;
+    font-size: 18px;
+    border: 1px solid var(--black);
+    border-radius: 8px;
+}
+
+.stats-button {
+    display: flex;
+    justify-content: center;
+}
+
+.stats-link {
+    background-color: var(--very-light-blue);
+    border: 2px solid var(--light-blue);
+    border-radius: 12px;
+    padding: 20px 40px;
+    color: var(--black);
+}
+
+.plus-button {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 100;
+    text-align: right;
+    font-size: 60px;
+    cursor: pointer;
+}
+
+.plus-button a {
+    color: var(--black);
+}
+
+.create-show {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.create-show a {
+    color: var(--black);
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    .plus-button {
+        bottom: 50px;
+    }
+}

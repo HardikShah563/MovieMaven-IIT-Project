@@ -1,0 +1,167 @@
+/* variable css */
+:root {
+    --background-light: #ffffff;
+    --background-dark: #202020;
+    --light-text: #000000;
+    --dark-text: #ffffff;
+    --black-blue: #1B262C;
+    --navy-blue: #0F4C75;
+    --blue: #3282B8;
+    --sky-blue: #81cafa;
+    --light-blue: #cce7f8;
+    --very-light-blue: #e1f3ff;
+    --light-red: #ff7377;
+    --yellow: #ffc610;
+    --golden: #bc9864;
+    --off-black: #060606;
+    --light-grey: #e6e6e6;
+    --grey: #666666;
+    --dark-grey: #141414;
+    --off-white: #f5f5f5;
+    --sonic-silver: #707070;
+    --white: #ffffff;
+    --black: #000000;
+}
+
+/* Reset all web parameters */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    user-select: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a,
+img,
+input,
+button,
+.icon {
+    display: block;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: var(--light-blue);
+}
+
+/* ---- navigation bar logo ---- */
+.logo label {
+    display: flex;
+}
+
+.logo label a {
+    color: var(--black);
+}
+
+.logo label {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+/* ---- navigation bar buttons ---- */
+.nav-actions {
+    display: flex;
+    justify-content: space-evenly;
+    width: 300px;
+    transition: 500ms;
+}
+
+.nav-actions button {
+    border: 0px solid transparent;
+    background-color: transparent;
+}
+
+.nav-btn {
+    position: relative;
+    width: 50px;
+    text-align: center;
+}
+
+.nav-actions button p {
+    color: var(--grey);
+    font-size: 12px;
+}
+
+.nav-btn .icon {
+    margin-inline: auto;
+    font-size: 22px;
+    margin-bottom: 5px;
+    color: var(--black);
+}
+
+@media (max-width: 600px) {
+    header {
+        background-color: var(--white);
+    }
+
+    nav {
+        padding: 10px 20px;
+    }
+
+    .logo label a {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .nav-actions {
+        background-color: var(--light-blue);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 5px;
+        padding-block: 16px 10px;
+        box-shadow: 0 -2px 20px hsla(0, 0%, 0%, 0.1);
+        z-index: 1;
+    }
+}
+
+/* Common CSS */
+.title {
+    text-align: center;
+    margin: 5vh auto;
+}
+
+.blue-bg {
+    background-color: var(--sky-blue);
+}
+
+.red-bg {
+    background-color: var(--light-red);
+}
+
+
+/* Footer CSS */
+/* .footer {} */
+
+
+/* Scroll Bar CSS */
+::-webkit-scrollbar {
+    height: 2px;
+    padding: 20px;
+    background-color: var(--grey);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--grey);
+    /* border-radius: 10px; */
+}

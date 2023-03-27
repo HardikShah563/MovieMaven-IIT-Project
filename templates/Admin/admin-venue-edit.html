@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Venue</title>
+    <!-- Stylesheet Link -->
+    <link rel="stylesheet" href="../../Assets/Style/style.css">
+    <link rel="stylesheet" href="../../Assets/Style/form.css">
+    <!-- Script Link -->
+    <script src="../../Assets/Script/script.js" defer></script>
+    <!-- Icons Link -->
+    <script src="https://kit.fontawesome.com/6d232ec003.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <label><a href="../../index.html">Movie Maven</a></label>
+        </div>
+        <div class="nav-actions">
+            <button class="nav-btn">
+                <a href="../movies.html">
+                    <i class="fa-solid fa-clapperboard icon"></i>
+                    <p class="nav-action-label">Movies</p>
+                </a>
+            </button>
+            <button class="nav-btn">
+                <a href="../login.html">
+                    <i class="fa-solid fa-arrow-right-to-bracket icon"></i>
+                    <p class="nav-action-label">Login</p>
+                </a>
+            </button>
+        </div>
+    </nav>
+
+    <div class="form">
+        <h1 class="form-title">Edit Venue</h1>
+
+        <form action="?" method="post">
+            <h3>Name of the Show: Show-Name</h3>
+            
+            <h3>Time: 00:00 PM</h3>
+
+            <label 
+                class="form-label"
+                for="show-location">
+                Venue of the Show: 
+            </label>
+            
+            <input 
+                class="form-input"
+                type="text" 
+                name="show-location" 
+                id="show-location" 
+                placeholder="Eg: Mumbai"
+                required
+            >
+
+            <button 
+                class="form-button"
+                type="submit">
+                Edit Venue
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>
