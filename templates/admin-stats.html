@@ -1,3 +1,5 @@
+{% from 'navbar.html' import navbar %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,25 +19,7 @@
 </head>
 
 <body>
-    <nav>
-        <div class="logo">
-            <label><a href="../../index.html">M M</a>&nbsp;>&nbsp;<a href="#">Admin Dashboard</a></label>
-        </div>
-        <div class="nav-actions">
-            <button class="nav-btn">
-                <a href="./login.html">
-                    <i class="fa-solid fa-clapperboard icon"></i>
-                    <p class="nav-action-label">Movies</p>
-                </a>
-            </button>
-            <button class="nav-btn">
-                <a href="./login.html">
-                    <i class="fa-solid fa-arrow-right-to-bracket icon"></i>
-                    <p class="nav-action-label">Login</p>
-                </a>
-            </button>
-        </div>
-    </nav>
+    {{ navbar() }}
 
     <div class="title">
         <h1>Admin Stastics</h1>

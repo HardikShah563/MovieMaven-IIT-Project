@@ -1,3 +1,5 @@
+{% from 'navbar.html' import navbar %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,46 +17,7 @@
 </head>
 
 <body>
-    <nav>
-        <div class="logo">
-            <label><a href="{{url_for('index')}}">Movie Maven</a></label>
-        </div>
-        <div class="nav-actions">
-            <button class="nav-btn">
-                <a href="{{url_for('adminView')}}">
-                    <i class="fa-solid fa-wrench icon"></i>
-                    <p class="nav-action-label">Admin</p>
-                </a>
-            </button>
-            <button class="nav-btn">
-                <a href="{{url_for('movies')}}">
-                    <i class="fa-solid fa-clapperboard icon"></i>
-                    <p class="nav-action-label">Movies</p>
-                </a>
-            </button>
-
-            <button class="nav-btn">
-                <a href="{{url_for('dashboard')}}">
-                    <i class="fa-solid fa-user icon"></i>
-                    <p class="nav-action-label">Dashboard</p>
-                </a>
-            </button>
-            
-            <button class="nav-btn">
-                <a href="{{url_for('login')}}">
-                    <i class="fa-solid fa-arrow-right-to-bracket icon"></i>
-                    <p class="nav-action-label">Login</p>
-                </a>
-            </button>
-
-            <!-- <button class="nav-btn">
-                <a href="{{url_for('logout')}}">
-                    <i class="fa-solid fa-arrow-right-from-bracket icon"></i>
-                    <p class="nav-action-label">Logout</p>
-                </a>
-            </button> -->
-        </div>
-    </nav>
+    {{ navbar() }}
 
     <div class="home">
         <div class="title">
