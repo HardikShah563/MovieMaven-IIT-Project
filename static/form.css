@@ -114,6 +114,38 @@ form h3 {
     margin: 10px auto;
 }
 
+.message {
+    text-align: center;
+}
+
+.login-bg-red:before {
+    padding: 10px 20px;
+    background-color: var(--light-red-transp);
+    border: 2px solid var(--light-red);
+    content: 'Login error, try again!';
+}
+
+.login-bg-green:before {
+    padding: 10px 20px;
+    background-color: var(--light-green-transp);
+    border: 2px solid var(--light-green);
+    content: 'Login Successful!';
+}
+
+.register-bg-red:before {
+    padding: 10px 20px;
+    background-color: var(--light-red-transp);
+    border: 2px solid var(--light-red);
+    content: 'Login error, try again!';
+}
+
+.register-bg-green:before {
+    padding: 10px 20px;
+    background-color: var(--light-green-transp);
+    border: 2px solid var(--light-green);
+    content: 'Login Successful!';
+}
+
 @media (max-width: 500px) {
     .form {
         width: 90%;

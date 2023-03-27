@@ -21,6 +21,7 @@
     {{ navbar() }}
 
     <div class="form">
+        <!-- <div class="message login-bg-red login-bg-green"></div> -->
         <h1 class="form-title">Login</h1>
 
         <form action="?" method="post">
@@ -64,7 +65,7 @@
         <p class="below-form">
             Don't have an account? 
             &nbsp; 
-            <a href="./register.html">Register here</a>
+            <a href="{{ url_for('register') }}">Register here</a>
         </p>
     </div>
 </body>

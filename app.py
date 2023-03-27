@@ -1,7 +1,10 @@
 from flask import Flask, url_for
 from flask.templating import render_template
+# from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/moviemaven'
 
 @app.route('/')
 def index(): 
