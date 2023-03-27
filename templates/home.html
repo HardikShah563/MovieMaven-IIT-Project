@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Maven</title>
     <!-- Stylesheet Link -->
-    <link rel="stylesheet" href="./Assets/Style/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}" type="text/css">
     <!-- Script Link -->
     <script src="./Assets/Script/script.js" defer></script>
     <!-- Icons Link -->
@@ -17,38 +17,38 @@
 <body>
     <nav>
         <div class="logo">
-            <label><a href="./index.html">Movie Maven</a></label>
+            <label><a href="{{url_for('index')}}">Movie Maven</a></label>
         </div>
         <div class="nav-actions">
             <button class="nav-btn">
-                <a href="./pages/Admin/admin-login.html">
+                <a href="{{url_for('adminView')}}">
                     <i class="fa-solid fa-wrench icon"></i>
                     <p class="nav-action-label">Admin</p>
                 </a>
             </button>
             <button class="nav-btn">
-                <a href="./pages/movies.html">
+                <a href="{{url_for('movies')}}">
                     <i class="fa-solid fa-clapperboard icon"></i>
                     <p class="nav-action-label">Movies</p>
                 </a>
             </button>
 
             <button class="nav-btn">
-                <a href="./pages/userDashboard.html">
+                <a href="{{url_for('dashboard')}}">
                     <i class="fa-solid fa-user icon"></i>
                     <p class="nav-action-label">Dashboard</p>
                 </a>
             </button>
             
             <button class="nav-btn">
-                <a href="./pages/login.html">
+                <a href="{{url_for('login')}}">
                     <i class="fa-solid fa-arrow-right-to-bracket icon"></i>
                     <p class="nav-action-label">Login</p>
                 </a>
             </button>
 
             <!-- <button class="nav-btn">
-                <a href="./pages/logout.html">
+                <a href="{{url_for('logout')}}">
                     <i class="fa-solid fa-arrow-right-from-bracket icon"></i>
                     <p class="nav-action-label">Logout</p>
                 </a>
