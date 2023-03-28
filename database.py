@@ -1,4 +1,5 @@
 import psycopg2
+import psycopg2.extras
 
 hostname = 'localhost'
 database = 'moviemaven'
@@ -18,14 +19,14 @@ try:
         port = port_id
     )
 
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
 
     create_script = ''' 
         create table if not exists users (
             u_id integer not null, 
-            name varchar(50) not null,
-            email varchar(50), 
-            password varchar(50),
+            name varchar(100) not null,
+            email varchar(100), 
+            password varchar(200),
             isadmin boolean not null default false
         );
     '''
@@ -48,22 +49,14 @@ try:
     cur.execute(create_script)
     conn.commit()
 
-    insert_script = ''' 
-        insert into users (u_id, name, email, password) 
-        values (NEXTVAL('user_seq_no'), %s, %s, %s)
-    '''
-    insert_values = ('Hardik Shah', 'hardikts@gmail.com', 'hardikshah')
-    cur.execute(insert_script, insert_values)
-    conn.commit()
-
 
 
     
 except Exception as error: 
     print(error)
+
 finally: 
     if conn is not None: 
         conn.close()
     if cur is not None: 
         cur.close()
-

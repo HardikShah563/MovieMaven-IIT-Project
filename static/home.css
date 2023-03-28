@@ -51,6 +51,10 @@ button,
     display: block;
 }
 
+button {
+    cursor: pointer;
+}
+
 html {
     scroll-behavior: smooth;
     font-family: sans-serif;
