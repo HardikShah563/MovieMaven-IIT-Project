@@ -1,13 +1,37 @@
 from flask import Flask, url_for
 from flask.templating import render_template
 # from flask_sqlalchemy import SQLAlchemy
+import os
+import psycopg2
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/moviemaven'
 
+# ########################################
+# Making Database Connections
+# ########################################
+def get_db_connection():
+    conn = psycopg2.connect(
+        host = 'localhost',
+        database = 'moviemaven',
+        user = os.environ['DB_USERNAME'],
+        passwrod = os.environ['DB_PASSWORD']
+    )
+    return conn
+
+# ########################################
+# Creating Routes
+# ########################################
 @app.route('/')
 def index(): 
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('select * from users;')
+    users = cur.fetchall()
+    cur.close()
+    conn.close()
+    
     return render_template('home.html')
 
 @app.route('/login')
