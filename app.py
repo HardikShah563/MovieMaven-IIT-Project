@@ -5,24 +5,6 @@ import psycopg2
 import psycopg2.extras
 from database import *
 
-hostname = 'localhost'
-database = 'moviemaven'
-username = 'postgres'
-pwd = 'Hardikts@563'
-port_id = 5432
-
-conn = None
-cur = None
-
-conn = psycopg2.connect(
-    host = hostname,
-    dbname = database,
-    user = username,
-    password = pwd,
-    port = port_id
-)
-
-cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
 msg = ""
 
 
@@ -38,14 +20,19 @@ def login():
 
 @app.route('/register', methods=["POST", "GET"])
 def register():
-    msg = ""
+    msg = ["", ""]
+    className = ""
     if request.method == 'POST': 
         name = request.form['name']
         email = request.form['email']
         password = hash(request.form['password'])
         msg = registerAccount(name, email, password)
+        if(msg[0] == 0): 
+            className = 'bg-red'
+        else: 
+            className = 'bg-green'
         
-    return render_template('register.html', msg = msg)
+    return render_template('register.html', className = className,  msg = msg[1])
 
 @app.route('/bookShow')
 def bookShow():

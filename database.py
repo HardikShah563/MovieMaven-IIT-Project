@@ -70,7 +70,7 @@ def registerAccount(name, email, password):
     cur.execute(insert_script, insert_values)
     conn.commit()
     if(cur.fetchall):
-        return "Email Already exists! Log in if you have an account!"
+        return [0, "Email Already exists! Log in if you have an account!"]
 
     insert_script = '''
         insert into users (u_id, name, email, password) 
@@ -87,7 +87,7 @@ def registerAccount(name, email, password):
     cur.execute(insert_script, insert_values)
     conn.commit()
 
-    return "New Account Registered!"
+    return [1, "New Account Registered!"]
 
 def loginAccount(email, password): 
     insert_script = '''
@@ -96,9 +96,9 @@ def loginAccount(email, password):
     insert_values = (email, password)
     cur.execute(insert_script, insert_values)
     if(cur): 
-        msg = 'Login Successful!'
+        msg = [1, 'Login Successful!']
     else: 
-        msg = 'Error loging in! Try again'
+        msg = [0, 'Error loging in! Try again']
     conn.commit()
 
 def getVenue(): 
