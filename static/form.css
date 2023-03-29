@@ -146,6 +146,13 @@ form h3 {
     content: 'Login Successful!';
 }
 
+.message {
+    text-align: center;
+    border: 2px solid var(--light-blue);
+    padding: 10px 20px;
+    background-color: var(--very-light-blue);
+}
+
 @media (max-width: 500px) {
     .form {
         width: 90%;

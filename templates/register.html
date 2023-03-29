@@ -26,6 +26,9 @@
         <h1 class="form-title">Register New Account</h1>
 
         <form action="{{ url_for('register') }}" method="post">
+            <div class="message">
+                {{ msg }}
+            </div>
             <label 
                 class="form-label"
                 for="name">

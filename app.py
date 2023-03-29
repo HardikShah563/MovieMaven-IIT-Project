@@ -3,7 +3,7 @@ from flask.templating import render_template
 from werkzeug.security import generate_password_hash, check_password_hash
 import psycopg2
 import psycopg2.extras
-import database
+from database import *
 
 hostname = 'localhost'
 database = 'moviemaven'
@@ -23,7 +23,7 @@ conn = psycopg2.connect(
 )
 
 cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
-
+msg = ""
 
 
 app = Flask(__name__)
@@ -38,20 +38,14 @@ def login():
 
 @app.route('/register', methods=["POST", "GET"])
 def register():
+    msg = ""
     if request.method == 'POST': 
         name = request.form['name']
         email = request.form['email']
-        password = request.form['password']
-        hashed_password = hash(password)
-        insert_script = '''
-            insert into users (u_id, name, email, password) 
-            values (NEXTVAL('user_seq_no'), %s, %s, %s)
-        '''
-        insert_values = (name, email, hashed_password)
-        cur.execute(insert_script, insert_values)
-        conn.commit()
-
-    return render_template('register.html')
+        password = hash(request.form['password'])
+        msg = registerAccount(name, email, password)
+        
+    return render_template('register.html', msg = msg)
 
 @app.route('/bookShow')
 def bookShow():
