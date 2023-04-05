@@ -10,32 +10,43 @@ msg = ""
 
 app = Flask(__name__)
 
+# ---------------------------------------------
+
 @app.route('/')
 def index(): 
     return render_template('home.html')
+
+# ---------------------------------------------
 
 @app.route('/login')
 def login():
     return render_template('login.html')
 
+# ---------------------------------------------
+
 @app.route('/register', methods=["POST", "GET"])
 def register():
-    msg = ["", ""]
+    msg = [0, ""]
     className = ""
     if request.method == 'POST': 
         name = request.form['name']
         email = request.form['email']
         password = hash(request.form['password'])
         msg = registerAccount(name, email, password)
-        if(msg[0] == 0): 
-            className = 'bg-red'
-        else: 
+        if(msg): 
             className = 'bg-green'
+            msgText = "New Account Registered!"
+        else: 
+            className = 'bg-red'
+            msgText = "Email Already exists! Log in if you have an account!"
         
-    return render_template('register.html', className = className,  msg = msg[1])
+    return render_template('register.html', className = className,  msg = msgText)
 
-@app.route('/bookShow')
+# ---------------------------------------------
+
+@app.route('/bookShow', methods=["POST", "GET"])
 def bookShow():
+
     return render_template('bookShow.html')
 
 @app.route('/movies')
