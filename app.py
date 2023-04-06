@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import psycopg2
 import psycopg2.extras
 from database import *
+import hashlib
 
 msg = ""
 
@@ -18,26 +19,43 @@ def index():
 
 # ---------------------------------------------
 
-@app.route('/login')
+@app.route('/login', methods=["POST", "GET"])
 def login():
-    return render_template('login.html')
+    className = ""
+    msgText = ""
+    if request.method == 'POST': 
+        email = request.form['email']
+        password = hash(request.form['password'])
+        password = hashlib.sha256(request.form['password'].encode('utf-8')).hexdigest()
+        password = password[0:9]
+        msg = loginAccount(email, password)
+        if(msg): 
+            className = "bg-green"
+            msgText = "Login Successful!"
+        else: 
+            className = "bg-red"
+            msgText = "Login Un-Successful, try again!"
+
+    return render_template('login.html', className = className,  msg = msgText)
 
 # ---------------------------------------------
 
 @app.route('/register', methods=["POST", "GET"])
 def register():
-    msg = [0, ""]
+    msg = False
     className = ""
+    msgText = ""
     if request.method == 'POST': 
         name = request.form['name']
         email = request.form['email']
-        password = hash(request.form['password'])
+        password = hashlib.sha256(request.form['password'].encode('utf-8')).hexdigest()
+        password = password[0:9]
         msg = registerAccount(name, email, password)
         if(msg): 
-            className = 'bg-green'
+            className = "bg-green"
             msgText = "New Account Registered!"
         else: 
-            className = 'bg-red'
+            className = "bg-red"
             msgText = "Email Already exists! Log in if you have an account!"
         
     return render_template('register.html', className = className,  msg = msgText)

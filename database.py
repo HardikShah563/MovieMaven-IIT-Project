@@ -154,23 +154,17 @@ def registerAccount(name, email, password):
        return True
 
 def loginAccount(email, password): 
-    print("Deal!")
-    # data = ""
-    # insert_script = '''
-    #     select password from users where email = %s
-    # '''
-    # insert_values = ([email])
-    # cur.execute(insert_script, insert_values)
-    # conn.commit()
-    # data = cur.fetchall
-    # if(not(data)): 
-    #     msg = [0, 'Email does not exist, Create an account if you don\'t have!']
-    # if(data[1,4] != password): 
-    #     msg = [0, "Incorrect Password!"]
-    # else: 
-    #     msg = [1, 'Login Successful!']
-    #     # initialize session variables
-    
+    insert_script = '''
+        select password from users where email = %s
+    '''
+    insert_values = ([email])
+    cur.execute(insert_script, insert_values)
+    conn.commit()
+    data = cur.fetchall()
+    if(data[0][0] == password): 
+        return True
+    else: 
+        return False
 
 def getVenue(): 
     insert_script = '''
