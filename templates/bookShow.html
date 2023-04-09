@@ -22,18 +22,27 @@
 
     <div class="form">
         <h1 class="form-title">Book A Show</h1>
-
-        <h2>Name of the show: Show_Name</h2>
-        <br>
-        <h3>Time: 00:00 PM</h3>
-        <br>
-        <p>Total Available Seats: </p>
-        <li>₹349 - 10</li>
-        <li>₹199 - 20</li>
-        <li>₹149 - 30</li>
-        <br>
-
-        <form action="?" method="post">
+        <form action="{{ url_for('bookShow') }}" method="post">
+            <div class="message">
+                <div class={{className}}>
+                    {{ msg }}
+                </div>
+            </div>
+            <label 
+                class="form-label"
+                for="show-name">
+                Name of the Show: 
+            </label>
+            
+            <select 
+                class="form-input"
+                name="show-name" 
+                id="show-name"
+                required>
+                {% for show in shows %}
+                    <option value="{{ venue }}">{{ show[1] }} - {{ show[2] }}</option>
+                {% endfor %}
+            </select>
             <div class="ticket-flex">
                 <div class="ticket-cost-calculate">
                     <label 

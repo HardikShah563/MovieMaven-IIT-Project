@@ -82,9 +82,15 @@ def register():
 
 @app.route('/bookShow', methods=["POST", "GET"])
 def bookShow():
-    # if request.method == 'POST': 
+    className = ''
+    msgText = ''
+    shows = getShows()
+    if request.method == 'POST': 
+        showName = request.form['show-name']
+        className = 'bg-green'
+        msgText = "Show booked successfully!"
 
-    return render_template('bookShow.html', session = session)
+    return render_template('bookShow.html', session = session, shows = shows, className = className, msg = msgText)
 
 @app.route('/movies', methods=["POST", "GET"])
 def movies():
@@ -160,9 +166,7 @@ def adminCreateVenue():
     if request.method == 'POST': 
         showVenue = request.form['show-venue']
         status = createVenue(showVenue)
-        if status or not status: 
-            className = "bg-green"
-            msgText = "Show Created Successfully!"
+        return redirect('/ad-view')
     return render_template('admin-venue-create.html', session = session, className = className, msg = msgText)
 
 @app.route('/ad-editvenue', methods=["POST", "GET"])

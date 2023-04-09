@@ -277,7 +277,6 @@ def createVenue(venue_name):
     insert_values = ([venue_name])
     cur.execute(insert_script, insert_values)
     conn.commit()
-    return True
 
 def deleteVenue(venue_name): 
     v_id = getSpecificVenue(venue_name)

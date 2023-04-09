@@ -44,7 +44,7 @@
                                 <div class="silver ticket">₹ {{ show[3] }}</div>
                             </div>
                             <a 
-                                href="{{ url_for('bookShow', show_id = show[0]) }}" 
+                                href="{{ url_for('bookShow', show_id = show[0], show_name = show[1]) }}" 
                                 class="ticket-button">
                                 Book Tickets
                             </a>
