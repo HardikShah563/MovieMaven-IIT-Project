@@ -26,176 +26,56 @@
     </div>
 
     <div class="all-movies">
-        <div class="venue">
-
-            <div class="venue-name">Venue: Place 1</div>
-            <!-- <div class="no-shos">No shows created</div> -->
-            <div class="list-of-shows">
-                <div class="show">
-                    <div class="show-name">
-                        Show Name
-                    </div>
-                    <div class="show-time">
-                        00:00PM
-                    </div>
-                    <a href="./admin-show-edit.html" class="show-edit">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                    <div class="show-delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </div>
+        {% for i in range(0, len) %}
+            <div class="venue">
+                <div class="venue-name">Venue: {{ venues[i] }}</div>
+                <div class="list-of-shows">
+                    {% for show in shows %}
+                        {% if show[12] == (i+1) %}
+                            <div class="show">
+                                <div class="show-name">
+                                    {{ show[1] }}
+                                </div>
+                                <div class="show-time">
+                                    {{ show[2] }}
+                                </div>
+                                <div class="show-buttons">
+                                    <a href="{{ url_for('adminEditShow', venue_name = show[1]) }}" class="show-edit">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="{{ url_for('adminEditShow') }}" class="show-delete">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-
-                <div class="show">
-                    <div class="show-name">
-                        Show Name
-                    </div>
-                    <div class="show-time">
-                        00:00PM
-                    </div>
-                    <a href="./admin-show-edit.html" class="show-edit">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                    <div class="show-delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </div>
-                </div>
-
-                <div class="show">
-                    <div class="show-name">
-                        Show Name
-                    </div>
-                    <div class="show-time">
-                        00:00PM
-                    </div>
-                    <a href="./admin-show-edit.html" class="show-edit">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                    <div class="show-delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </div>
-                </div>
-
-                <div class="show">
-                    <div class="show-name">
-                        Show Name
-                    </div>
-                    <div class="show-time">
-                        00:00PM
-                    </div>
-                    <a href="./admin-show-edit.html" class="show-edit">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                    <div class="show-delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="create-show">
-                <a href="./admin-show-create.html"><i class="fa-solid fa-square-plus"></i> Create A Show</a>
-            </div>
-            <div class="venue-buttons">
-                <a href="./admin-venue-edit.html" class="blue-bg editVenue"><i class="fa-regular fa-pen-to-square"></i></a>
-                <a class="red-bg deleteVenue"><i class="fa-solid fa-trash"></i></a>
-            </div>
-        </div>
-
-        <div class="venue">
-
-            <div class="venue-name">Venue: Place 2</div>
-            <!-- <div class="no-shos">No shows created</div> -->
-            <div class="list-of-shows">
-                <div class="show">
-                    <div class="show-name">
-                        Show Name
-                    </div>
-                    <div class="show-time">
-                        00:00PM
-                    </div>
-                    <a href="./admin-show-edit.html" class="show-edit">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                    <div class="show-delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </div>
-                </div>
-
-                <div class="show">
-                    <div class="show-name">
-                        Show Name
-                    </div>
-                    <div class="show-time">
-                        00:00PM
-                    </div>
-                    <a href="./admin-show-edit.html" class="show-edit">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                    <div class="show-delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </div>
-                </div>
-
-                <div class="show">
-                    <div class="show-name">
-                        Show Name
-                    </div>
-                    <div class="show-time">
-                        00:00PM
-                    </div>
-                    <a href="./admin-show-edit.html" class="show-edit">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                    <div class="show-delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </div>
-                </div>
-
-                <div class="show">
-                    <div class="show-name">
-                        Show Name
-                    </div>
-                    <div class="show-time">
-                        00:00PM
-                    </div>
-                    <a href="./admin-show-edit.html" class="show-edit">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                    <div class="show-delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </div>
-                </div>
-
                 <div class="create-show">
-                    <a href="./admin-show-create.html"><i class="fa-solid fa-square-plus"></i> Create A Show</a>
+                    <a href="{{ url_for('adminCreateShow') }}"><i class="fa-solid fa-square-plus"></i> Create A Show</a>
+                </div>
+                <div class="venue-buttons">
+                    <form action="{{ url_for('adminEditVenue') }}" method="post">
+                        <input type="hidden" name="venue_name" id="venue_name" value="{{ venues[i] }}">
+                        <button 
+                            type="submit" 
+                            class="blue-bg editVenue"
+                            name="adminEditVenue">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </button>
+                    </form>
+                    <form action="{{ url_for('adminDeleteVenue') }}" method="post">
+                        <input type="hidden" name="venue_name" value="{{ venues[i] }}">
+                        <button 
+                            type="submit" 
+                            class="red-bg deleteVenue" 
+                            name="adminDeleteVenue">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
-            <div class="venue-buttons">
-                <a href="./admin-venue-edit.html" class="blue-bg editVenue">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                </a>
-                <a class="red-bg deleteVenue">
-                    <i class="fa-solid fa-trash"></i>
-                </a>
-            </div>
-        </div>
-        <div class="venue">
-
-            <div class="venue-name">Venue: Place 3</div>
-            <!-- <div class="no-shos">No shows created</div> -->
-            <div class="list-of-shows">
-                <div class="create-show">
-                    <a href="./admin-show-create.html"><i class="fa-solid fa-square-plus"></i> Create A Show</a>
-                </div>
-            </div>
-            <div class="venue-buttons">
-                <a href="./admin-venue-edit.html" class="blue-bg editVenue">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                </a>
-                <a class="red-bg deleteVenue">
-                    <i class="fa-solid fa-trash"></i>
-                </a>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
     <div class="stats-button">
@@ -203,7 +83,7 @@
     </div>
 
     <div class="plus-button">
-        <a href="./admin-venue-create.html" class="fa-solid fa-square-plus"></a>
+        <a href="{{ url_for('adminCreateVenue') }}" class="fa-solid fa-square-plus"></a>
     </div>
 </body>
 

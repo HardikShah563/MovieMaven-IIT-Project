@@ -23,29 +23,37 @@
     <div class="form">
         <h1 class="form-title">Edit Venue</h1>
 
-        <form action="?" method="post">
-            <h3>Name of the Show: Show-Name</h3>
-            
-            <h3>Time: 00:00 PM</h3>
+        <form action="{{ url_for('editVenueName') }}" method="post">
+            <div class="message">
+                <div class={{className}}>
+                    {{ msg }}
+                </div>
+            </div>
+            <h3>Name of the Show: {{ venue_name }}</h3>
+            <input 
+                type="hidden" 
+                name="old_venue"
+                value="{{ venue_name }}">
 
             <label 
                 class="form-label"
-                for="show-location">
+                for="new_venue">
                 Venue of the Show: 
             </label>
             
             <input 
                 class="form-input"
                 type="text" 
-                name="show-location" 
-                id="show-location" 
+                name="new_venue" 
+                id="new_venue" 
                 placeholder="Eg: Mumbai"
                 required
             >
 
             <button 
                 class="form-button"
-                type="submit">
+                type="submit"
+                name="editVenueName">
                 Edit Venue
             </button>
         </form>

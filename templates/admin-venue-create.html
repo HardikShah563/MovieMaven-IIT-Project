@@ -24,6 +24,11 @@
         <h1 class="form-title">Create A Venue</h1>
 
         <form action="?" method="post">
+            <div class="message">
+                <div class={{className}}>
+                    {{ msg }}
+                </div>
+            </div>
             <label 
                 class="form-label"
                 for="show-location">
@@ -33,60 +38,16 @@
             <input 
                 class="form-input"
                 type="text" 
-                name="show-location" 
-                id="show-location" 
-                placeholder="Eg: Mumbai"
-                required
-            >
-
-            <label 
-                class="form-label"
-                for="show-ticket1-seats">
-                Number of Platinum Seats: 
-            </label>
-            
-            <input 
-                class="form-input"
-                type="number" 
-                name="show-ticket1-seats" 
-                id="show-ticket1-seats" 
-                placeholder="Eg: 20"
-                required
-            >
-
-            <label 
-                class="form-label"
-                for="show-ticket2-seats">
-                Number of Gold Seats: 
-            </label>
-            
-            <input 
-                class="form-input"
-                type="number" 
-                name="show-ticket2-seats" 
-                id="show-ticket2-seats" 
-                placeholder="Eg: 30"
-                required
-            >
-
-            <label 
-                class="form-label"
-                for="show-ticket3-seats">
-                Number of Silver Seats: 
-            </label>
-            
-            <input 
-                class="form-input"
-                type="number" 
-                name="show-ticket3-seats" 
-                id="show-ticket3-seats" 
-                placeholder="Eg: 50"
+                name="show-venue" 
+                id="show-venue" 
+                placeholder="Eg: Cinepolis: Thane (W)"
                 required
             >
 
             <button 
                 class="form-button"
-                type="submit">
+                type="submit"
+                name="adminCreateVenue">
                 Create Venue
             </button>
         </form>

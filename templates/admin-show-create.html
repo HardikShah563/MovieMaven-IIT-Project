@@ -23,7 +23,12 @@
     <div class="form">
         <h1 class="form-title">Create A Show</h1>
 
-        <form action="?" method="post">
+        <form action="{{ url_for('adminCreateShow') }}" method="post">
+            <div class="message">
+                <div class={{className}}>
+                    {{ msg }}
+                </div>
+            </div>
             <label 
                 class="form-label"
                 for="show-name">
@@ -56,18 +61,19 @@
 
             <label 
                 class="form-label"
-                for="show-location">
+                for="show-venue">
                 Venue of the Show: 
             </label>
             
-            <input 
+            <select 
                 class="form-input"
-                type="text" 
-                name="show-location" 
-                id="show-location" 
-                placeholder="Eg: Mumbai"
-                required
-            >
+                name="show-venue" 
+                id="show-venue"
+                required>
+                {% for venue in venues %}
+                    <option value="{{ venue }}">{{ venue }}</option>
+                {% endfor %}
+              </select>
 
             <label 
                 class="form-label"
@@ -114,10 +120,55 @@
                 required
             >
 
+            <label 
+                class="form-label"
+                for="qty-ticket1">
+                Platinum Ticket Quantity: 
+            </label>
+            
+            <input 
+                class="form-input"
+                type="number" 
+                name="qty-ticket1" 
+                id="qty-ticket1" 
+                placeholder="Eg: 20"
+                required
+            >
+
+            <label 
+                class="form-label"
+                for="qty-ticket2">
+                Gold Ticket Quantity: 
+            </label>
+            
+            <input 
+                class="form-input"
+                type="number" 
+                name="qty-ticket2" 
+                id="qty-ticket2" 
+                placeholder="Eg: 30"
+                required
+            >
+
+            <label 
+                class="form-label"
+                for="qty-ticket3">
+                Silver Ticket Quantity: 
+            </label>
+            
+            <input 
+                class="form-input"
+                type="number" 
+                name="qty-ticket3" 
+                id="qty-ticket3" 
+                placeholder="Eg: 50"
+                required
+            >
+
             <button 
                 class="form-button"
                 type="submit">
-                Save
+                Create Show
             </button>
         </form>
     </div>

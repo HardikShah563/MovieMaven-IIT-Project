@@ -122,7 +122,28 @@ def adminLogin():
 
 @app.route('/ad-createshow', methods=["POST", "GET"])
 def adminCreateShow(): 
-    return render_template('admin-show-create.html', session = session)
+    className = ""
+    msgText = ""
+    venues = getVenue()
+    if request.method == 'POST': 
+        showName = request.form['show-name']
+        showTime = request.form['show-time']
+        showVenue = request.form['show-venue']
+        platinumPrice = request.form['show-ticket1']
+        goldPrice = request.form['show-ticket2']
+        silverPrice = request.form['show-ticket3']
+        platinumQty = request.form['qty-ticket1']
+        goldQty = request.form['qty-ticket2']
+        silverQty = request.form['qty-ticket3']
+        venueId = getSpecificVenue(showVenue)
+        status = createShow(showName, showTime, silverPrice, goldPrice, platinumPrice, silverQty, goldQty, platinumQty, venueId)
+        if status: 
+            className = "bg-red"
+            msgText = "Show wasn't created, try again!"
+        else: 
+            className = "bg-green"
+            msgText = "Show Created Successfully!"
+    return render_template('admin-show-create.html', session = session, className = className, msg = msgText, venues = venues)
 
 @app.route('/ad-editshow', methods=["POST", "GET"])
 def adminEditShow():
@@ -134,16 +155,45 @@ def adminStats():
 
 @app.route('/ad-createvenue', methods=["POST", "GET"])
 def adminCreateVenue():
-    return render_template('admin-venue-create.html', session = session)
+    className = ""
+    msgText = ""
+    if request.method == 'POST': 
+        showVenue = request.form['show-venue']
+        status = createVenue(showVenue)
+        if status or not status: 
+            className = "bg-green"
+            msgText = "Show Created Successfully!"
+    return render_template('admin-venue-create.html', session = session, className = className, msg = msgText)
 
 @app.route('/ad-editvenue', methods=["POST", "GET"])
 def adminEditVenue():
-    
+    if request.method == 'POST': 
+        venueName = request.form['venue_name']
+        return render_template('admin-venue-edit.html', session = session, venue_name = venueName)
     return render_template('admin-venue-edit.html', session = session)
+
+@app.route('/ad-editvenue', methods=["POST", "GET"])
+def editVenueName():
+    if request.method == 'POST': 
+        oldVenue = request.form['old_venue']
+        newVenue = request.form['new-venue']
+        status = editVenue(oldVenue, newVenue)
+        if status or not status: 
+            className = "bg-green"
+            msgText = "Venue Name Edited Successfully!"
+
+@app.route('/ad-deletevenue', methods=["POST", "GET"])
+def adminDeleteVenue():
+    if request.method == 'POST': 
+        venue_name = request.form['venue_name']
+        deleteVenue(venue_name)
+    return redirect("/ad-view")
 
 @app.route('/ad-view', methods=["POST", "GET"])
 def adminView():
-    return render_template('admin-view.html', session = session)
+    venues = getVenue()
+    shows = getShows()
+    return render_template('admin-view.html', session = session, venues = venues, len = len(venues), shows = shows)
 
 @app.route('/logout')
 def logout():

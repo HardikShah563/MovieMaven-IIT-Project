@@ -25,6 +25,11 @@
     width: 100%;
 }
 
+.form select {
+    width: 100%;
+    color: var(--grey);
+}
+
 .form .form-title {
     font-size: 42px;
     text-align: center;
