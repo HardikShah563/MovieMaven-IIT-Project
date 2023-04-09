@@ -1,16 +1,26 @@
-{% macro navbar(className) %}
+{% macro navbar(session) %}
 
 <nav>
     <div class="logo">
         <label><a href="{{url_for('index')}}">Movie Maven</a></label>
     </div>
     <div class="nav-actions">
-        <button class="nav-btn">
-            <a href="{{url_for('adminLogin')}}">
-                <i class="fa-solid fa-wrench icon"></i>
-                <p class="nav-action-label">Admin</p>
-            </a>
-        </button>
+        {% if session.isAdmin %}
+            <button class="nav-btn">
+                <a href="{{url_for('adminLogin')}}">
+                    <i class="fa-solid fa-user-gear icon"></i>
+                    <p class="nav-action-label">Admin Dashboard</p>
+                </a>
+            </button>
+        {% else %}
+            <button class="nav-btn">
+                <a href="{{url_for('adminLogin')}}">
+                    <i class="fa-solid fa-wrench icon"></i>
+                    <p class="nav-action-label">Admin Login</p>
+                </a>
+            </button>
+        {% endif %}
+        
         <button class="nav-btn">
             <a href="{{url_for('movies')}}">
                 <i class="fa-solid fa-clapperboard icon"></i>
@@ -18,23 +28,22 @@
             </a>
         </button>
 
-        <button class="nav-btn">
-            <a href="{{url_for('dashboard')}}">
-                <i class="fa-solid fa-user icon"></i>
-                <p class="nav-action-label">Dashboard</p>
-            </a>
-        </button>
-        
-        
+        {% if session.isAdmin != True and session.u_id %}
+            <button class="nav-btn">
+                <a href="{{url_for('dashboard')}}">
+                    <i class="fa-solid fa-user icon"></i>
+                    <p class="nav-action-label">Dashboard</p>
+                </a>
+            </button>
+        {% endif %}
 
-        {% if className == 'bg-green' %}
+        {% if session.u_id %}
             <button class="nav-btn">
                 <a href="{{url_for('logout')}}">
                     <i class="fa-solid fa-arrow-right-from-bracket icon"></i>
                     <p class="nav-action-label">Logout</p>
                 </a>
             </button>
-        
         {% else %}
             <button class="nav-btn">
                 <a href="{{url_for('login')}}">

@@ -176,25 +176,26 @@ def getUID(email):
     data = cur.fetchone()
     return data[0]
 
-def getName(u_id): 
+def getName(email): 
     insert_script = '''
-        select name from users where u_id = %s
+        select name from users where email = %s
     '''
-    insert_values = ([u_id])
+    insert_values = ([email])
     cur.execute(insert_script, insert_values)
     conn.commit()
     data = cur.fetchone()
     return data[0]
 
-def isAdmin(u_id): 
+def adminCheck(email): 
     insert_script = '''
-        select isAdmin from users where u_id = %s
+        select isadmin from users where email = %s
     '''
-    insert_values = ([u_id])
+    insert_values = ([email])
     cur.execute(insert_script, insert_values)
     conn.commit()
     data = cur.fetchone()
     return data[0]
+
 
 def getVenue(): 
     get_script = '''
@@ -208,7 +209,6 @@ def getVenue():
         venues.append(venue[0])
     return venues
 
-
 def getShows(): 
     get_script = '''
         select show_name from shows
@@ -217,8 +217,44 @@ def getShows():
     conn.commit()
 
 
-    
-    check_values = ([])
+# scripts related to Admin View
+
+def adminLogin(email, password): 
+    insert_script = '''
+        select isadmin from users where email = %s
+    '''
+    insert_values = (['hardikts@gmail.com'])
+    cur.execute(insert_script, insert_values)
+    conn.commit()
+    data = cur.fetchone()
+    if(data[0]): 
+        return True
+    else: 
+        return False
+
+def createShow(show_name, show_time, silver_cost, gold_cost, platinum_cost, silver_count, gold_count, platinum_count, silver_booked, gold_booked, platinum_booked, venue_id, venue_name): 
+    insert_script = '''
+        insert into shows
+        values (NEXTVAL('show_seq_no'), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    '''
+    insert_values = (show_name, show_time, silver_cost, gold_cost, platinum_cost, silver_count, gold_count, platinum_count, silver_booked, gold_booked, platinum_booked, venue_id, venue_name)
+    cur.execute(insert_script, insert_values)
+    conn.commit()
+
+def createVenue(venue_name): 
+    insert_script = '''
+        select into venue
+        values (NEXTVAL('venue_seq_no'), %s)
+    '''
+    insert_values = ([venue_name])
+    cur.execute(insert_script, insert_values)
+    conn.commit()
+
+def editShow(): 
+    print("")
+
+def editVenue(): 
+    print("")
 
 # conn.close()
 # cur.close()
