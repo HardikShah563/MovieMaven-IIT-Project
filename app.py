@@ -7,7 +7,12 @@ from database import *
 import hashlib
 
 msg = ""
-
+session = []
+# session[0] = u_id
+# session[1] = name
+# session[2] = email
+# session[3] = isAdmin
+# Values inserted during login
 
 app = Flask(__name__)
 
@@ -31,7 +36,11 @@ def login():
         msg = loginAccount(email, password)
         if(msg): 
             className = "bg-green"
-            msgText = "Login Successful!"
+            msgText = "Login Successful!" 
+            session[0] = getUID(email)
+            session[1] = getName(session[0])
+            session[2] = email
+            session[3] = isAdmin(session[0])
         else: 
             className = "bg-red"
             msgText = "Login Un-Successful, try again!"
@@ -67,39 +76,40 @@ def bookShow():
 
     return render_template('bookShow.html')
 
-@app.route('/movies')
+@app.route('/movies', methods=["POST", "GET"])
 def movies():
     return render_template('movies.html')
 
-@app.route('/u-dashboard')
+@app.route('/u-dashboard', methods=["POST", "GET"])
 def dashboard():
     return render_template('userDashboard.html')
 
-@app.route('/ad-login')
+@app.route('/ad-login', methods=["POST", "GET"])
 def adminLogin():
     return render_template('admin-login.html')
 
-@app.route('/ad-createshow')
+@app.route('/ad-createshow', methods=["POST", "GET"])
 def adminCreateShow():
     return render_template('admin-show-create.html')
 
-@app.route('/ad-editshow')
+@app.route('/ad-editshow', methods=["POST", "GET"])
 def adminEditShow():
     return render_template('admin-show-edit.html')
 
-@app.route('/ad-stats')
+@app.route('/ad-stats', methods=["POST", "GET"])
 def adminStats():
     return render_template('admin-stats.html')
 
-@app.route('/ad-createvenue')
+@app.route('/ad-createvenue', methods=["POST", "GET"])
 def adminCreateVenue():
     return render_template('admin-venue-create.html')
 
-@app.route('/ad-editvenue')
+@app.route('/ad-editvenue', methods=["POST", "GET"])
 def adminEditVenue():
+    
     return render_template('admin-venue-edit.html')
 
-@app.route('/ad-view')
+@app.route('/ad-view', methods=["POST", "GET"])
 def adminView():
     return render_template('admin-view.html')
 
@@ -108,7 +118,11 @@ def logout():
     return render_template('home.html')
 
 
-
+def isAdmin(): 
+    if session[3] == True: 
+        return True
+    else: 
+        return False
 
 
 

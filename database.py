@@ -166,27 +166,60 @@ def loginAccount(email, password):
     else: 
         return False
 
-def getVenue(): 
+def getUID(email): 
     insert_script = '''
-        select * from venue
+        select u_id from users where email = %s
     '''
-    cur.execute(insert_script)
+    insert_values = ([email])
+    cur.execute(insert_script, insert_values)
     conn.commit()
+    data = cur.fetchone()
+    return data[0]
+
+def getName(u_id): 
+    insert_script = '''
+        select name from users where u_id = %s
+    '''
+    insert_values = ([u_id])
+    cur.execute(insert_script, insert_values)
+    conn.commit()
+    data = cur.fetchone()
+    return data[0]
+
+def isAdmin(u_id): 
+    insert_script = '''
+        select isAdmin from users where u_id = %s
+    '''
+    insert_values = ([u_id])
+    cur.execute(insert_script, insert_values)
+    conn.commit()
+    data = cur.fetchone()
+    return data[0]
+
+def getVenue(): 
+    get_script = '''
+        select venue_name from venue
+    '''
+    cur.execute(get_script)
+    conn.commit()
+    data = cur.fetchall()
+    venues = []
+    for venue in data: 
+        venues.append(venue[0])
+    return venues
+
 
 def getShows(): 
-    insert_script = '''
-        select 
+    get_script = '''
+        select show_name from shows
     '''
+    cur.execute(get_script)
+    conn.commit()
 
+
+    
+    check_values = ([])
 
 # conn.close()
 # cur.close()
-# insert_script = '''
-#         select * from users where email = %s
-#     '''
-# insert_values = (['hardikts@gmail.com'])
-# cur.execute(insert_script, insert_values)
-# # cur.execute(insert_script)
-# data = cur.fetchall()
-# conn.commit()
-# print("Data: ", data)
+

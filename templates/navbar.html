@@ -1,4 +1,4 @@
-{% macro navbar() %}
+{% macro navbar(className) %}
 
 <nav>
     <div class="logo">
@@ -25,19 +25,24 @@
             </a>
         </button>
         
-        <button class="nav-btn">
-            <a href="{{url_for('login')}}">
-                <i class="fa-solid fa-arrow-right-to-bracket icon"></i>
-                <p class="nav-action-label">Login</p>
-            </a>
-        </button>
+        
 
-        <!-- <button class="nav-btn">
-            <a href="{{url_for('logout')}}">
-                <i class="fa-solid fa-arrow-right-from-bracket icon"></i>
-                <p class="nav-action-label">Logout</p>
-            </a>
-        </button> -->
+        {% if className == 'bg-green' %}
+            <button class="nav-btn">
+                <a href="{{url_for('logout')}}">
+                    <i class="fa-solid fa-arrow-right-from-bracket icon"></i>
+                    <p class="nav-action-label">Logout</p>
+                </a>
+            </button>
+        
+        {% else %}
+            <button class="nav-btn">
+                <a href="{{url_for('login')}}">
+                    <i class="fa-solid fa-arrow-right-to-bracket icon"></i>
+                    <p class="nav-action-label">Login</p>
+                </a>
+            </button>
+        {% endif %}
     </div>
 </nav>
 
