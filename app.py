@@ -82,12 +82,15 @@ def register():
 
 @app.route('/bookShow', methods=["POST", "GET"])
 def bookShow():
+    # if request.method == 'POST': 
 
     return render_template('bookShow.html', session = session)
 
 @app.route('/movies', methods=["POST", "GET"])
 def movies():
-    return render_template('movies.html', session = session)
+    venues = getVenue()
+    shows = getShows()
+    return render_template('movies.html', session = session, venues = venues, len = len(venues), shows = shows)
 
 @app.route('/u-dashboard', methods=["POST", "GET"])
 def dashboard():
@@ -95,26 +98,27 @@ def dashboard():
 
 @app.route('/ad-login', methods=["POST", "GET"])
 def adminLogin():
-    # if session[0] != 0: 
-    #     className = "bg-red"
-    #     msgText = "First logout from already logged in account!"
-    if request.method == 'POST':  
-        email = ""
+    className = ""
+    msgText = ""
+    if request.method == 'POST': 
         email = request.form['email']
+        password = hash(request.form['password'])
         password = hashlib.sha256(request.form['password'].encode('utf-8')).hexdigest()
         password = password[0:9]
-        msg = adminLogin(email, password)
+        msg = loginAccount(email, password)
         if(msg): 
             className = "bg-green"
             msgText = "Login Successful!" 
-            session[0] = getUID(email)
-            session[1] = getName(session[0])
-            session[2] = email
-            session[3] = isAdmin(email)
+            
+            session['u_id'] = getUID(email)
+            session['name'] = getName(email)
+            session['email'] = email
+            session['isAdmin'] = adminCheck(email)
+            return redirect("/ad-view")
         else: 
             className = "bg-red"
-            msgText = "Try logging in with an admin account!"
-    return render_template('admin-login.html', session = session)
+            msgText = "Try again with admin credentials!!"
+    return render_template('admin-login.html', className= className, msg = msgText, session = session)
 
 @app.route('/ad-createshow', methods=["POST", "GET"])
 def adminCreateShow(): 

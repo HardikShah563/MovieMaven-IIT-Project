@@ -51,7 +51,6 @@ create_script = '''
         gold_booked integer not null, 
         platinum_booked integer not null, 
         venue_id integer not null, 
-        venue_name varchar(100) not null, 
         PRIMARY KEY (show_id), 
         FOREIGN KEY (venue_id) REFERENCES venue (venue_id)
     );
@@ -161,6 +160,8 @@ def loginAccount(email, password):
     cur.execute(insert_script, insert_values)
     conn.commit()
     data = cur.fetchall()
+    if(not data):
+        return False
     if(data[0][0] == password): 
         return True
     else: 
@@ -211,23 +212,26 @@ def getVenue():
 
 def getShows(): 
     get_script = '''
-        select show_name from shows
+        select * from shows
     '''
     cur.execute(get_script)
     conn.commit()
-
+    data = cur.fetchall()
+    return data
 
 # scripts related to Admin View
 
 def adminLogin(email, password): 
     insert_script = '''
-        select isadmin from users where email = %s
+        select password from users where email = %s
     '''
-    insert_values = (['hardikts@gmail.com'])
+    insert_values = ([email])
     cur.execute(insert_script, insert_values)
     conn.commit()
-    data = cur.fetchone()
-    if(data[0]): 
+    data = cur.fetchall()
+    if(data == []): 
+        return False
+    if(data[0][0] == password): 
         return True
     else: 
         return False

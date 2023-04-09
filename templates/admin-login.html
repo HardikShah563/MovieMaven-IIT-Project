@@ -24,6 +24,11 @@
         <h1 class="form-title">Admin Login</h1>
 
         <form action="?" method="post">
+            <div class="message">
+                <div class={{className}}>
+                    {{ msg }}
+                </div>
+            </div>
             <label 
                 class="form-label"
                 for="email">
@@ -56,11 +61,15 @@
 
             <button 
                 class="form-button"
+                name="admin-login"
                 type="submit">
                 Login as an Admin
             </button>
-            <a href="{{url_for('adminView')}}">admin view</a>
         </form>
+
+        <p class="below-form">
+            **\\ If you do not have admin rights, try contacting the administrator //**
+        </p>
     </div>
 </body>
 
